@@ -1,28 +1,26 @@
 public inherited sharing class RenewalOpp {
     
-    public static void oppToOppRenewal(List<Opportunity> opps){
+    public static void createRenewalOpp(List<Opportunity> opps){
          
         List<Opportunity> renewals = new List<Opportunity>();
-         
-         for(Opportunity o: opps){
-             if(o.StageName == 'Closed Won'){
-                 Opportunity Arenewal = new Opportunity();
-                 //Opportunity Brenewal = new Opportunity();
-                 //Arenewal.Name = o.Name + ‘Renewal’;
+        //Id RecordTypeId = Schema.SObjectType.Opportunity.getRecordTypeInfosByName('Renewal').getRecordTypeId();
 
-                 Arenewal.AccountId = o.AccountId;
-                 Arenewal.CloseDate = o.CloseDate + 365; 
-                 Arenewal.StageName = 'Open';
-                 //Arenewal.RecordTypeId = o.RecordTypeId;
-                 Arenewal.OwnerId = o.OwnerId;
-                 renewals.add(Arenewal);
+         for(Opportunity o: opps){
+             if(o.StageName.contains('Closed Won')){
+                 Opportunity renewal = new Opportunity();
+                 renewal.AccountId = o.AccountId;
+                 renewal.Name = o.Name + ' Renewal';
+                 renewal.CloseDate = o.CloseDate.addYears(1); 
+                 renewal.StageName = 'Open';
+                // renewal.RecordTypeId = RecordTypeId;
+                 renewal.OwnerId = o.OwnerId;
+                 renewals.add(renewal);
 
             }
          
           }
-           if(renewals.size() > 0){
-                insert renewals;
-            }
+        insert renewals;
+        
    } 
 
   
