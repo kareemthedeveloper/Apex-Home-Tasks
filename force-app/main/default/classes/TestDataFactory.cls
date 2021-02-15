@@ -1,12 +1,20 @@
 @isTest public inherited sharing class TestDataFactory {
     
-    /*
-    public static List<Case> createCases(Integer numOfCases) {
-          List<Case> allCases = new List<Case>();
-          for(Integer counter = 1; counter <= numOfCases; counter++){
+     public static List<Case> createCases(Integer numOfCases) {
+          List<Case> cases = new List<Case>();
+          for(Integer counter = 0; counter < numOfCases; counter++){
               Case c = new Case();
+              c.Subject = 'Subject ' + counter;
+              c.Status = 'New ';
+              c.Origin = 'Web';
+
+              cases.add(c);
           }
+          insert cases;
+
+          return cases;
     }
+    /*
 
     public static List<Account> createAccountsWithContacts(Integer numAccts, Integer numCtacts){
         List<Account> accts = new List<Account>();
@@ -29,6 +37,7 @@
    
     
     */
+
     
 }
 
