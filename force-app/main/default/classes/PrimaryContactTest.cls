@@ -1,7 +1,6 @@
 
 @isTest public inherited sharing class PrimaryContactTest {
-    //Use test data factory
-    //runAs (SysAdmin)
+    
     
     @TestSetup
     static void makeData(){
@@ -41,29 +40,6 @@
       }
     
     }
-
-
-    /*
-      Id SysAdmin = [select id from profile where name like 'System Administrator'].id;
-        User u1 = [select name from User where profileid =: SysAdmin limit 1];  
-        
-        System.runAs(u1){
-          Contact c = [select name, Primary_Contact__c from Contact where name like 'Larry'];
-          System.assertEquals(true, Primary_Contact__c);
-
-        }
    
-      @isTest public static void ContactIsNotPrimary(){
-        Id SysAdmin = [select id from profile where name like 'System Administrator'].id;
-        User u2 = [select name from User where profileid =: SysAdmin limit 1];
-
-          System.runAs(u1){
-          Contact c = [select name, Primary_Contact__c from Contact where name like 'Angelo'];
-          System.assertEquals(false, Primary_Contact__c);
-
-        }
-
-      }
-    */
    
 }

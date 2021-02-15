@@ -1,9 +1,14 @@
 @isTest public class RestrictCaseWithLimitTest {
-   
+     
      @isTest 
      static void CasesInAction(){
+          
           Case[] cases = TestDataFactory.createCases(74);
           
+          //74 cases created and 26 cases exist in Org
+          Integer allCasesCount = [select count() from Case where createdDate =This_Month];
+          System.assertEquals(74, allCasesCount);
+
           Test.startTest();
      try{
           Case c = new Case();
