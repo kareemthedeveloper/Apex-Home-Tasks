@@ -15,7 +15,7 @@
           return cases;
     }
     /*
-
+    //creates Accounts with Contacts 
     public static List<Account> createAccountsWithContacts(Integer numAccts, Integer numCtacts){
         List<Account> accts = new List<Account>();
         for(Integer i = 0; i < numAccts; i++){
