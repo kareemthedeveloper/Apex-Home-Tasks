@@ -3,11 +3,11 @@
      @isTest 
      static void CasesInAction(){
           
-          Case[] cases = TestDataFactory.createCases(74);
+          Case[] cases = TestDataFactory.createCases(99);
           
           //74 cases created and 26 cases exist in Org
           Integer allCasesCount = [select count() from Case where createdDate =This_Month];
-          System.assertEquals(74, allCasesCount);
+          System.assertEquals(99, allCasesCount);
 
           Test.startTest();
      try{
