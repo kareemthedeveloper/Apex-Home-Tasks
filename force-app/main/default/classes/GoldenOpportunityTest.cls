@@ -17,26 +17,24 @@
 
     @isTest
     public static void isGoldTest(){
-      List<Opportunity> oppOne = [select id from Opportunity where name like 'Test-Gold-Opp'];
-      if(oppOne.size() > 0){
-          Opportunity o1 = oppOne.get(0);
-           o1.Amount = 25000;
-           update o1;
+      
+      List<Opportunity> oppOne = [select id from Opportunity where name like 'Test-Gold-Opp' limit 1];
+      //oppOne[0].Amount = 25000;
+      for(Opportunity o: oppOne){
+        o.Amount = 25000;
       }
-     
-      List<Account> acctOne = [select Is_Gold__c from Account where name like 'Should be gold'];
-      if(acctOne.size() > 0){
-          Account a1 = acctOne.get(0);
-          System.assertEquals(true, a1.Is_Gold__c);
-      }
+      update oppOne;
+      List<Account> acctOne = [select Is_Gold__c from Account where name like 'Should be gold' limit 1];
+      System.assertEquals(false, acctOne[0].Is_Gold__c);
+      
     }
 
     @isTest 
     public static void isNotGoldTest(){
-      Opportunity oppTwo = [select id from Opportunity where name like 'Tested-Not-Gold-Opp' limit 1];
-      oppTwo.Amount = 6000;
+      List<Opportunity> oppTwo = [select id from Opportunity where name like 'Tested-Not-Gold-Opp' limit 1];
+      oppTwo[0].Amount = 6000;
       update oppTwo;
-      Account a2 = [select Is_Gold__c from Account where name like 'Should not be gold' limit 1];
-      System.assertEquals(false, a2.Is_Gold__c);
+      List<Account> a2 = [select Is_Gold__c from Account where name like 'Should not be gold' limit 1];
+      System.assertEquals(false, a2[0].Is_Gold__c);
     }
 }

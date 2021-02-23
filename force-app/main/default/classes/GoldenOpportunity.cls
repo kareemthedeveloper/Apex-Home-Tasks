@@ -1,15 +1,20 @@
 public inherited sharing class GoldenOpportunity {
    
     public static void checkOppAmount(List<Opportunity> opps){
-        List<Account> accts = [select id,  Is_Gold__c from  Account];
-
+        Set<Id> aId = new Set<Id>();
+        
         for(Opportunity o: opps){
-           for(Account a: accts){
-            if(o.Amount > 20000){
-                a.Is_Gold__c = true;
-            }
-          }
+            aId.add(o.AccountId);
         }
+      
+      List<Account> accts = [select id,Is_Gold__c, (Select Id from Opportunities where Amount > 20000) from Account where Id in:aId];
+      
+      for(Account a: accts){
+          a.Is_Gold__c = true;
+      }
+
+        
     }
+
 
 }
