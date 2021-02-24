@@ -5,10 +5,10 @@ public inherited sharing class LeadKeyFieldsAction {
          List<String> kWordsCounted = new List<String>();
          List<Task> taskList = new List<Task>();
 
-         Integer count = 0;
+         Integer count = 1;
 
          for(Lead myLead: leads){
-             leadFields.put('first name ', myLead.Name);
+             leadFields.put('first name ', myLead.FirstName);
              leadFields.put('last name ', myLead.LastName);
              leadFields.put('company ', myLead.Company);
              leadFields.put('email', myLead.Email);
@@ -21,8 +21,8 @@ public inherited sharing class LeadKeyFieldsAction {
           for(String key: leadFields.keySet()){
               String fieldName = leadFields.get(key);
               if(fieldName != null){
-                  count+=1;
                   kWordsCounted.add(fieldName);
+                  count+=1;
               }
           }
          
@@ -31,7 +31,7 @@ public inherited sharing class LeadKeyFieldsAction {
               if(theLead.Key_Fields_Populated__c > 3){
                  for(String fieldVals: kWordsCounted){
                      Task t = new Task();
-                     t.Subject = 'KF- Task';
+                     t.Subject = 'Quick- Task';
                      t.Status = 'Open';
                      t.Priority = 'Normal';
                      taskList.add(t);
