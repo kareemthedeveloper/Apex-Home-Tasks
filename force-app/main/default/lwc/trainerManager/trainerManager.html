@@ -5,9 +5,9 @@
                 <template for:each={trainers.data} for:item="trainer">
                     <li key={trainer.id}>
                         <div class="slds-p-around_medium lgc-bg">
-                            <lightning-tile label={trainer__c.Name} type="media">
+                            <lightning-tile label={trainer.Name} type="media">
                                 <lightning-icon slot="media" icon-name="standard:trainer"></lightning-icon>
-                                <p class="slds-truncate" title={trainer__c.Age__c}>{trainer__c.Age__c}</p>
+                                <p class="slds-truncate" title={trainer.Age__c}>{trainer.Age__c}</p>
                             </lightning-tile>
                         </div>
                     </li>
