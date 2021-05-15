@@ -1,0 +1,18 @@
+<template>
+    <lightning-card title="All Trainers">
+        <ul>
+            <template if:true={responseReceived}>
+                <template for:each={trainers.data} for:item="trainer">
+                    <li key={trainer.id}>
+                        <div class="slds-p-around_medium lgc-bg">
+                            <lightning-tile label={trainer.Name} type="media">
+                                <lightning-icon slot="media" icon-name="standard:trainer"></lightning-icon>
+                                <p class="slds-truncate" title={trainer.Age__c}>{trainer.Age__c}</p>
+                            </lightning-tile>
+                        </div>
+                    </li>
+                </template>
+            </template>
+        </ul>
+    </lightning-card>
+</template>
